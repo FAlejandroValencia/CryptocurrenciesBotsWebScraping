@@ -1,4 +1,5 @@
 const puppeteer = require('puppeteer');
+require('events').EventEmitter.defaultMaxListeners = 0;
 
 
 const process = async (client, ServerID, DroleID, IroleID, BotID, selectorA, selectorP) => {
@@ -6,7 +7,7 @@ const process = async (client, ServerID, DroleID, IroleID, BotID, selectorA, sel
     try {
         console.log("Opening the browser......");
         browser = await puppeteer.launch({
-            headless: false, //true
+            headless: true,
             args: ["--disable-setuid-sandbox"],
             'ignoreHTTPSErrors': true
         });
